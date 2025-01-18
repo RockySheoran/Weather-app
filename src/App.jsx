@@ -46,16 +46,18 @@ function App() {
           heatIndex={weather.heatindex}
           iconString={weather.description}
           conditions={weather.description}
+          icon={weather.icon}
         />
 
         <div className="flex justify-center gap-8 flex-wrap w-[60%]">
           {values?.slice(1, 7).map((curr) => {
             return (
               <MiniCard
-                key={curr.datetime}
-                time={curr.datetime}
-                temp={curr.temp}
-                iconString={curr.conditions}
+                key={curr.dt}
+                icon={curr.weather[0].icon}
+                time={curr.dt_txt}
+                temp={curr.main.temp}
+                iconString={curr.weather[0].description}
               />
             )
           })}

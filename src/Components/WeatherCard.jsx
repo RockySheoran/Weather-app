@@ -18,31 +18,32 @@ const WeatherCard = ({
   heatIndex,
   iconString,
   conditions,
+  icon
 }) => {
 
-  const [icon, setIcon] = useState(sun)
-  // const { time } = useDate()
+  // const [icon, setIcon] = useState(sun)
+  // // const { time } = useDate()
 
-  useEffect(() => {
-    if (iconString) {
-      if (iconString.toLowerCase().includes('cloud')) {
-        setIcon(cloud)
-      } else if (iconString.toLowerCase().includes('rain')) {
-        setIcon(rain)
-      } else if (iconString.toLowerCase().includes('clear')) {
-        setIcon(sun)
-      } else if (iconString.toLowerCase().includes('thunder')) {
-        setIcon(storm)
-      } else if (iconString.toLowerCase().includes('fog')) {
-        setIcon(fog)
-      } else if (iconString.toLowerCase().includes('snow')) {
-        setIcon(snow)
-      } else if (iconString.toLowerCase().includes('wind')) {
-        setIcon(wind)
-      }
-    }
+  // useEffect(() => {
+  //   if (iconString) {
+  //     if (iconString.toLowerCase().includes('cloud')) {
+  //       setIcon(cloud)
+  //     } else if (iconString.toLowerCase().includes('rain')) {
+  //       setIcon(rain)
+  //     } else if (iconString.toLowerCase().includes('clear')) {
+  //       setIcon(sun)
+  //     } else if (iconString.toLowerCase().includes('thunder')) {
+  //       setIcon(storm)
+  //     } else if (iconString.toLowerCase().includes('fog')) {
+  //       setIcon(fog)
+  //     } else if (iconString.toLowerCase().includes('snow')) {
+  //       setIcon(snow)
+  //     } else if (iconString.toLowerCase().includes('wind')) {
+  //       setIcon(wind)
+  //     }
+  //   }
     
-  }, [iconString])
+  // }, [iconString])
   const [today, setDate] = useState(new Date())
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const WeatherCard = ({
   return (
     <div className='w-[22rem]  min-w-[300px] h-[30rem] glassCard sm:p-4 py-2 px-2' >
       <div className='flex w-full just-center, items-center gap-4 sm:mt-12 mt-5 mb-4'>
-        <img src={icon} alt="weather_icon" />
+        <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather_icon" />
         <p className='font-bold text-4xl sm:text-5xl flex justify-center items-center' >{temperature} &deg;C</p>
       </div>
       <div className='font-bold text-center text-xl'>

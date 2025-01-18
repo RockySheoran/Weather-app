@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
-import sun from '../assets/icons/sun.png'
-import cloud from '../assets/icons/cloud.png'
-import fog from '../assets/icons/fog.png'
-import rain from '../assets/icons/rain.png'
-import snow from '../assets/icons/snow.png'
-import storm from '../assets/icons/storm.png'
-import wind from '../assets/icons/windy.png'
+import React, { useEffect, useState } from "react"
+import sun from "../assets/icons/sun.png"
+import cloud from "../assets/icons/cloud.png"
+import fog from "../assets/icons/fog.png"
+import rain from "../assets/icons/rain.png"
+import snow from "../assets/icons/snow.png"
+import storm from "../assets/icons/storm.png"
+import wind from "../assets/icons/windy.png"
 
-const MiniCard = ({ time, temp, iconString }) => {
-  const [icon, setIcon] = useState()
+const MiniCard = ({ time, icon, temp, iconString }) => {
+  const [icon1, setIcon] = useState()
 
   useEffect(() => {
+    console.log(iconString)
     if (iconString) {
       if (iconString.toLowerCase().includes('cloud')) {
         setIcon(cloud)
@@ -31,15 +32,28 @@ const MiniCard = ({ time, temp, iconString }) => {
     }
   }, [iconString])
   return (
-    <div className='glassCard w-[10rem] h-[10rem] p-4 flex flex-col'>
-      <p className='text-center'>
-        {new Date(time).toLocaleTimeString('en', { weekday: 'long' }).split(" ")[0]}
+    <div className="glassCard w-[10rem] h-[10rem] p-4 flex flex-col">
+      <p className="text-center">
+        {
+          new Date(time)
+            .toLocaleTimeString("en", { weekday: "long" })
+            .split(" ")[0]
+        }
       </p>
       <hr />
-      <div className='w-full flex justify-center items-center flex-1'>
-        <img src={icon} alt="forecast not available" className='w-[4rem] h-[4rem]' />
+      <div className="w-full flex justify-center items-center flex-1">
+        <img
+          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt="forecast not available"
+          className="w-[4rem] h-[4rem]"
+        />
+        <img
+          src={icon1}
+          alt="forecast not available"
+          className="w-[2.5rem] h-[2.5rem]"
+        />
       </div>
-      <p className='text-center font-bold'>{temp}&deg;C</p>
+      <p className="text-center font-bold">{temp}&deg;C</p>
     </div>
   )
 }
