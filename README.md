@@ -50,7 +50,7 @@ npm install
 ```
 3. Run
 ```
-nom run dev
+npm run dev
 ``` 
 4. Open `index.html` in your browser to view the project.
 
